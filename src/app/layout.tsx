@@ -31,5 +31,3 @@ export default function RootLayout({
     </ClerkProvider>
   );
 }
-
-// Git commit - Setuped Clerk Auth, Added middleware for Clerk Auth
