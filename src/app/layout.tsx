@@ -11,8 +11,8 @@ const IBMPlex = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Image.Ai",
-  description: "AI-powered image generator and manipulator",
+  title: "ImageGeniusAI",
+  description: "AI-powered image manipulation tool which can be used to fill in missing parts of an image, remove unwanted objects, remove background, and more.",
 };
 
 export default function RootLayout({
@@ -26,6 +26,9 @@ export default function RootLayout({
         variables: { colorPrimary: "#624cf5"}
       }}>
       <html lang="en">
+        <head>
+          <link rel='icon' href='/assets/images/logo-icon.svg' />
+        </head>
         <body className={cn("font-IBMPlex antialiased", IBMPlex.variable)}>{children}</body>
       </html>
     </ClerkProvider>
