@@ -6,6 +6,14 @@ import { PlaceholderValue } from 'next/dist/shared/lib/get-img-props'
 import Image from 'next/image'
 import React from 'react'
 
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
+  
+
 const TransformedImage = ({ image, type, title, transformationConfig, isTransforming, setIsTransforming, hasDownload = false }: TransformedImageProps) => {
     const downloadHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
@@ -26,18 +34,28 @@ const TransformedImage = ({ image, type, title, transformationConfig, isTransfor
                 </h3>
 
                 {hasDownload && (
-                    <button
-                        className="download-btn"
-                        onClick={downloadHandler}
-                    >
-                        <Image
-                            src="/assets/icons/download.svg"
-                            alt="Download"
-                            width={24}
-                            height={24}
-                            className="pb-[6px]"
-                        />
-                    </button>
+                    <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <button
+                            className="download-btn"
+                            onClick={downloadHandler}
+                        >
+                            <Image
+                                src="/assets/icons/download.svg"
+                                alt="Download"
+                                width={24}
+                                height={24}
+                                className="pb-[6px]"
+                            />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Download Image</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                  
                 )}
             </div>
 
