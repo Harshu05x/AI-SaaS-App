@@ -16,14 +16,14 @@ export async function checkoutCredits(transaction: CheckoutTransactionParams) {
         line_items: [
             {
                 price_data: {
-                    currency: 'usd',
+                    currency: "inr",
                     unit_amount: amount,
                     product_data: {
                         name: transaction.plan,
-                    }
+                    },
                 },
-                quantity: 1
-            }
+                quantity: 1,
+            },
         ],
         metadata: {
             plan: transaction.plan,
@@ -33,6 +33,7 @@ export async function checkoutCredits(transaction: CheckoutTransactionParams) {
         mode: 'payment',
         success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/profile`,
         cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/`,
+        billing_address_collection: "required"
     })
 
     redirect(session.url!)
